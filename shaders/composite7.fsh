@@ -2,6 +2,8 @@
 
 uniform sampler2D colortex0;
 uniform int worldTime;
+uniform float viewWidth;
+uniform float viewHeight;
 
 varying vec2 texcoord;
 

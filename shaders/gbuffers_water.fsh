@@ -42,7 +42,9 @@ void main() {
     float dayProgress = float(worldTime) / 24000.0;
     dayProgress = fract(dayProgress - 0.25);
     float waterDepth = texture2D(depthtex0, gl_FragCoord.xy / vec2(viewWidth, viewHeight)).r;
-    waterDepth = ld(waterDepth);
+    float nearVal = gl_ProjectionMatrix[3][2] / (gl_ProjectionMatrix[2][2] - 1.0);
+    float farVal = gl_ProjectionMatrix[3][2] / (gl_ProjectionMatrix[2][2] + 1.0);
+    waterDepth = (2.0 * nearVal) / (farVal + nearVal - waterDepth * (farVal - nearVal));
     vec3 waterColor = vec3(WATER_COLOR_R, WATER_COLOR_G, WATER_COLOR_B);
     waterColor = toLinear(waterColor);
     float absorption = exp(-waterDepth * 3.0);

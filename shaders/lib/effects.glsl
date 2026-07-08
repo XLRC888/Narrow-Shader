@@ -22,26 +22,6 @@ vec3 applyChromaticAberration(sampler2D tex, vec2 uv, float strength) {
     return vec3(r, g, b);
 }
 
-vec3 applyDepthOfField(sampler2D tex, sampler2D depthTex, vec2 uv, float focalDist, float aperture) {
-    float depth = texture2D(depthTex, uv).r;
-    float linearDepth = ld(depth);
-    float coc = abs(linearDepth - focalDist) * aperture;
-    coc = clamp(coc, 0.0, 1.0);
-    vec2 texelSize = 1.0 / vec2(viewWidth, viewHeight);
-    vec3 color = vec3(0.0);
-    float totalWeight = 0.0;
-    for (int x = -3; x <= 3; x++) {
-        for (int y = -3; y <= 3; y++) {
-            vec2 offset = vec2(float(x), float(y)) * texelSize * coc * 5.0;
-            float weight = 1.0 - length(vec2(float(x), float(y))) / 4.24;
-            weight = max(weight, 0.0);
-            color += texture2D(tex, uv + offset).rgb * weight;
-            totalWeight += weight;
-        }
-    }
-    return color / totalWeight;
-}
-
 vec3 applyMotionBlur(sampler2D tex, vec2 uv, vec2 velocity, float strength) {
     vec3 color = vec3(0.0);
     float totalWeight = 0.0;
