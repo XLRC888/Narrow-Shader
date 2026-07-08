@@ -5,6 +5,7 @@ uniform sampler2D lightmap;
 uniform int worldTime;
 uniform float rainStrength;
 uniform vec3 sunPosition;
+uniform mat4 gbufferModelViewInverse;
 
 varying vec4 color;
 varying vec2 texcoord;
