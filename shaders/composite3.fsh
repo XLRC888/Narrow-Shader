@@ -1,6 +1,8 @@
 #version 330 compatibility
 
 uniform sampler2D colortex0;
+uniform float viewWidth;
+uniform float viewHeight;
 
 varying vec2 texcoord;
 
