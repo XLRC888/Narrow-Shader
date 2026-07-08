@@ -6,6 +6,8 @@ uniform sampler2D noisetex;
 uniform sampler2D shadowtex0;
 uniform sampler2D shadowtex1;
 uniform sampler2D depthtex0;
+uniform float viewWidth;
+uniform float viewHeight;
 
 uniform int worldTime;
 uniform float rainStrength;
