@@ -9,11 +9,10 @@ varying vec2 texcoord;
 #include "/lib/noise.glsl"
 #include "/lib/effects.glsl"
 
-#define MOOD 0
-#define VIGNETTE 0
+#define VIGNETTE
 #define VIGNETTE_STRENGTH 0.5
-#define FILM_GRAIN 0
-#define CHROMATIC_ABERRATION 0
+#define FILM_GRAIN
+#define CHROMATIC_ABERRATION
 #define CA_STRENGTH 0.003
 
 /* RENDERTARGETS: 0 */

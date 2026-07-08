@@ -4,23 +4,34 @@ uniform sampler2D colortex0;
 uniform sampler2D colortex1;
 uniform sampler2D colortex2;
 uniform sampler2D depthtex0;
-uniform sampler2D shadowtex0;
-uniform sampler2D shadowtex1;
-uniform sampler2D noisetex;
 
 uniform int worldTime;
 uniform float rainStrength;
-uniform float frameTimeCounter;
 uniform vec3 sunPosition;
-uniform vec3 cameraPosition;
+uniform vec3 near; far;
+uniform mat4 gbufferProjectionInverse;
+uniform mat4 gbufferModelViewInverse;
 
 varying vec2 texcoord;
 
 #include "/lib/common.glsl"
-#include "/lib/depth.glsl"
 #include "/lib/lighting.glsl"
-#include "/lib/shadow.glsl"
-#include "/lib/projection.glsl"
+
+float ld(float depth) {
+    return (2.0 * near) / (far + near - depth * (far - near));
+}
+
+vec3 toViewSpace(vec3 p) {
+    vec4 clipPos = vec4(p * 2.0 - 1.0, 1.0);
+    vec4 viewPos = gbufferProjectionInverse * clipPos;
+    return viewPos.xyz / viewPos.w;
+}
+
+vec3 toWorldSpace(vec3 p) {
+    vec4 viewPos = vec4(p, 1.0);
+    vec4 worldPos = gbufferModelViewInverse * viewPos;
+    return worldPos.xyz;
+}
 
 /* RENDERTARGETS: 0 */
 layout(location = 0) out vec4 fragColor;
@@ -29,10 +40,9 @@ void main() {
     vec4 color = texture2D(colortex0, texcoord);
     vec4 lightData = texture2D(colortex1, texcoord);
     vec4 encodedNormal = texture2D(colortex2, texcoord);
-    float depth = getDepth(texcoord);
+    float depth = texture2D(depthtex0, texcoord).r;
     vec3 normal = normalize(encodedNormal.rgb * 2.0 - 1.0);
     vec3 viewPos = toViewSpace(vec3(texcoord, depth));
-    vec3 worldPos = toWorldSpace(viewPos);
     float dayProgress = float(worldTime) / 24000.0;
     dayProgress = fract(dayProgress - 0.25);
     if (depth < 1.0) {
@@ -45,11 +55,6 @@ void main() {
         lighting = mix(lighting, lighting * 0.5, rainStrength * 0.3);
         vec3 albedo = toLinear(color.rgb);
         vec3 lit = albedo * lighting;
-        float shadow = 1.0;
-        #ifdef SHADOW_QUALITY
-            shadow = getShadow(viewPos, normal);
-        #endif
-        lit *= shadow;
         lit = toSRGB(lit);
         color.rgb = lit;
     }

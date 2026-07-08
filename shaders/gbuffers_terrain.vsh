@@ -1,6 +1,47 @@
 #version 330 compatibility
 
+#define SHADOW_QUALITY
+#define SHADOW_DIST 1
 #define WAVE_FOLIAGE
+#define REFLECTIONS 1
+#define SSAO
+#define BLOOM
+#define DOF
+#define CHROMATIC_ABERRATION
+#define TAA 1
+#define VIGNETTE
+#define FILM_GRAIN
+#define MOOD 0
+#define VOLUMETRIC_CLOUDS
+#define CLOUD_QUALITY 1
+#define FOG_DENSITY 0.3
+#define FOG_START 32.0
+#define FOG_END 256.0
+#define FOG_COLOR_R 0.7
+#define FOG_COLOR_G 0.75
+#define FOG_COLOR_B 0.85
+#define FOG_NOISE 0.0
+#define GRADING_SATURATION 1.0
+#define GRADING_CONTRAST 1.0
+#define GRADING_TEMPERATURE 0.0
+#define GRADING_TINT 0.0
+#define GRADING_EXPOSURE 0.0
+#define GRADING_GAMMA 1.0
+#define VIGNETTE_STRENGTH 0.5
+#define CA_STRENGTH 0.003
+#define DOF_STRENGTH 1.0
+#define MOTION_BLUR
+#define MOTION_BLUR_SAMPLES 4
+#define WATER_COLOR_R 0.0
+#define WATER_COLOR_G 0.3
+#define WATER_COLOR_B 0.6
+#define WATER_OPACITY 0.85
+#define WATER_REFLECTIVITY 0.5
+#define CLOUD_OPACITY 1.0
+#define CLOUD_SPEED 1.0
+#define CLOUD_COVERAGE 0.5
+#define CLOUD_DETAIL 1.0
+#define CLOUD_HEIGHT 160.0
 
 attribute vec4 mc_Entity;
 attribute vec4 at_tangent;
