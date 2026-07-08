@@ -6,6 +6,7 @@ uniform sampler2D noisetex;
 
 uniform int worldTime;
 uniform float rainStrength;
+uniform vec3 sunPosition;
 
 varying vec4 color;
 varying vec2 texcoord;
