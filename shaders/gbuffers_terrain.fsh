@@ -32,6 +32,10 @@
 uniform sampler2D texture;
 uniform sampler2D lightmap;
 uniform sampler2D noisetex;
+uniform sampler2D shadowtex0;
+uniform mat4 shadowModelView;
+uniform mat4 shadowProjection;
+uniform vec3 cameraPosition;
 
 uniform int worldTime;
 uniform float rainStrength;

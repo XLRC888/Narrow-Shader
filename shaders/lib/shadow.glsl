@@ -5,7 +5,7 @@ float getShadowBias(vec3 viewPos, vec3 normal) {
 
 float getShadowPCF(vec3 shadowCoord, float bias) {
     float shadow = 0.0;
-    vec2 texelSize = 1.0 / shadowMapResolution;
+    vec2 texelSize = vec2(1.0 / shadowMapResolution);
     for (int x = -1; x <= 1; x++) {
         for (int y = -1; y <= 1; y++) {
             vec2 offset = vec2(float(x), float(y)) * texelSize;
@@ -20,7 +20,7 @@ float getShadowPCF(vec3 shadowCoord, float bias) {
 float getShadowPCSS(vec3 shadowCoord, float bias, float softness) {
     float avgBlockerDepth = 0.0;
     int numBlockers = 0;
-    vec2 texelSize = 1.0 / shadowMapResolution;
+    vec2 texelSize = vec2(1.0 / shadowMapResolution);
     for (int x = -2; x <= 2; x++) {
         for (int y = -2; y <= 2; y++) {
             vec2 offset = vec2(float(x), float(y)) * texelSize * softness;
