@@ -8,7 +8,6 @@ uniform sampler2D depthtex0;
 uniform int worldTime;
 uniform float rainStrength;
 uniform vec3 sunPosition;
-uniform vec3 near; far;
 uniform mat4 gbufferProjectionInverse;
 uniform mat4 gbufferModelViewInverse;
 
@@ -16,10 +15,6 @@ varying vec2 texcoord;
 
 #include "/lib/common.glsl"
 #include "/lib/lighting.glsl"
-
-float ld(float depth) {
-    return (2.0 * near) / (far + near - depth * (far - near));
-}
 
 vec3 toViewSpace(vec3 p) {
     vec4 clipPos = vec4(p * 2.0 - 1.0, 1.0);
