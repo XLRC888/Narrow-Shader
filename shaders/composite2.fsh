@@ -7,7 +7,7 @@ varying vec2 texcoord;
 #include "/lib/common.glsl"
 #include "/lib/bloom.glsl"
 
-/* RENDERTARGETS: 0 */
+/* RENDERTARGETS: 5 */
 layout(location = 0) out vec4 fragColor;
 
 void main() {

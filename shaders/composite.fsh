@@ -23,13 +23,27 @@ varying vec2 texcoord;
 #include "/lib/color.glsl"
 #include "/lib/projection.glsl"
 
+#ifndef MOOD
 #define MOOD 0
+#endif
+#ifndef FOG_DENSITY
 #define FOG_DENSITY 0.3
+#endif
+#ifndef FOG_COLOR_R
 #define FOG_COLOR_R 0.7
+#endif
+#ifndef FOG_COLOR_G
 #define FOG_COLOR_G 0.75
+#endif
+#ifndef FOG_COLOR_B
 #define FOG_COLOR_B 0.85
+#endif
+#ifndef VOLUMETRIC_CLOUDS
 #define VOLUMETRIC_CLOUDS
+#endif
+#ifndef CLOUD_QUALITY
 #define CLOUD_QUALITY 1
+#endif
 
 /* RENDERTARGETS: 0 */
 layout(location = 0) out vec4 fragColor;

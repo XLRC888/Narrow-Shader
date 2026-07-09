@@ -64,9 +64,4 @@ float getShadow(vec3 viewPos, vec3 normal) {
     #endif
 }
 
-float getCloudShadow(vec3 worldPos) {
-    vec3 sunDir = normalize(sunPosition);
-    vec3 cloudHit = worldPos + sunDir * ((160.0 - worldPos.y) / max(sunDir.y, 0.001));
-    float shadow = cloudDensity(cloudHit.xz, frameTimeCounter, 0);
-    return mix(1.0, 0.7, shadow * 0.3);
-}
+
