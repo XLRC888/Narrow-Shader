@@ -1,33 +1,62 @@
 #version 330 compatibility
 
-#define SHADOW_QUALITY
+#ifndef SHADOW_DIST
 #define SHADOW_DIST 1
-#define VOLUMETRIC_CLOUDS
-#define CLOUD_QUALITY 1
-#define WAVE_FOLIAGE
+#endif
+#ifndef REFLECTIONS
 #define REFLECTIONS 1
-#define SSAO
-#define BLOOM
-#define DOF
-#define CHROMATIC_ABERRATION
+#endif
+#ifndef TAA
 #define TAA 1
-#define VIGNETTE
-#define FILM_GRAIN
+#endif
+#ifndef MOOD
 #define MOOD 0
+#endif
+#ifndef CLOUD_QUALITY
+#define CLOUD_QUALITY 1
+#endif
+#ifndef FOG_DENSITY
 #define FOG_DENSITY 0.3
+#endif
+#ifndef FOG_COLOR_R
 #define FOG_COLOR_R 0.7
+#endif
+#ifndef FOG_COLOR_G
 #define FOG_COLOR_G 0.75
+#endif
+#ifndef FOG_COLOR_B
 #define FOG_COLOR_B 0.85
+#endif
+#ifndef GRADING_SATURATION
 #define GRADING_SATURATION 1.0
+#endif
+#ifndef GRADING_CONTRAST
 #define GRADING_CONTRAST 1.0
+#endif
+#ifndef GRADING_TEMPERATURE
 #define GRADING_TEMPERATURE 0.0
+#endif
+#ifndef GRADING_TINT
 #define GRADING_TINT 0.0
+#endif
+#ifndef GRADING_EXPOSURE
 #define GRADING_EXPOSURE 0.0
+#endif
+#ifndef GRADING_GAMMA
 #define GRADING_GAMMA 1.0
+#endif
+#ifndef VIGNETTE_STRENGTH
 #define VIGNETTE_STRENGTH 0.5
+#endif
+#ifndef CA_STRENGTH
 #define CA_STRENGTH 0.003
+#endif
+#ifndef shadowMapResolution
 #define shadowMapResolution 2048
+#endif
+#ifndef shadowDistance
 #define shadowDistance 64.0
+#endif
 
 uniform sampler2D texture;
 uniform sampler2D lightmap;

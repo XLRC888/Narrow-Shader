@@ -25,11 +25,21 @@ varying vec3 viewPos;
 varying vec3 worldPos;
 varying vec4 tangent;
 
+#ifndef WATER_COLOR_R
 #define WATER_COLOR_R 0.0
+#endif
+#ifndef WATER_COLOR_G
 #define WATER_COLOR_G 0.3
+#endif
+#ifndef WATER_COLOR_B
 #define WATER_COLOR_B 0.6
+#endif
+#ifndef WATER_OPACITY
 #define WATER_OPACITY 0.85
+#endif
+#ifndef WATER_REFLECTIVITY
 #define WATER_REFLECTIVITY 0.5
+#endif
 
 #include "/lib/common.glsl"
 #include "/lib/lighting.glsl"
