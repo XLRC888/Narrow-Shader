@@ -48,6 +48,9 @@ float getShadowPCSS(vec3 shadowCoord, float bias, float softness) {
 }
 
 float getShadow(vec3 viewPos, vec3 normal) {
+    #ifndef DYNAMIC_SHADOWS
+        return 1.0;
+    #endif
     vec4 shadowClip = shadowModelView * vec4(viewPos + cameraPosition, 1.0);
     shadowClip = shadowProjection * shadowClip;
     shadowClip.xyz /= shadowClip.w;

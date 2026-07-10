@@ -22,6 +22,7 @@ varying vec2 texcoord;
 #include "/lib/clouds.glsl"
 #include "/lib/color.glsl"
 #include "/lib/projection.glsl"
+#include "/lib/aurora.glsl"
 
 #ifndef MOOD
 #define MOOD 0
@@ -44,6 +45,12 @@ varying vec2 texcoord;
 #ifndef CLOUD_QUALITY
 #define CLOUD_QUALITY 1
 #endif
+#ifndef AURORA_STRENGTH
+#define AURORA_STRENGTH 0.8
+#endif
+#ifndef AURORA_HEIGHT
+#define AURORA_HEIGHT 0.45
+#endif
 
 /* RENDERTARGETS: 0 */
 layout(location = 0) out vec4 fragColor;
@@ -60,6 +67,15 @@ void main() {
         int cloudQuality = CLOUD_QUALITY;
         color.rgb = renderClouds(viewDir, color.rgb, dayProgress, cloudQuality, frameTimeCounter, rainStrength);
     #endif
+    if (depth >= 1.0 && AURORA_STRENGTH > 0.0) {
+        float nightFactor = 1.0 - smoothstep(0.2, 0.3, dayProgress) + smoothstep(0.7, 0.8, dayProgress);
+        nightFactor = clamp(nightFactor, 0.0, 1.0);
+        nightFactor *= 1.0 - rainStrength;
+        if (nightFactor > 0.01) {
+            vec3 aurora = getAurora(worldPos, frameTimeCounter, AURORA_STRENGTH * nightFactor, AURORA_HEIGHT, 1);
+            color.rgb += aurora;
+        }
+    }
     vec3 fogColor = vec3(FOG_COLOR_R, FOG_COLOR_G, FOG_COLOR_B);
     color.rgb = applyMoodFog(color.rgb, worldPos, frameTimeCounter, MOOD, FOG_DENSITY, fogColor, dayProgress);
     fragColor = color;
