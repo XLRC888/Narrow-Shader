@@ -19,6 +19,7 @@ vec2 toPrevScreenPos(vec2 currScreenPos, float depth, bool isDH) {
 vec3 clipAABB(vec3 prevColor, vec3 minColor, vec3 maxColor) {
     vec3 pClip = 0.5 * (maxColor + minColor);
     vec3 eClip = 0.5 * (maxColor - minColor);
+    if (max(eClip.x, max(eClip.y, eClip.z)) < 1e-6) return pClip;
     vec3 vClip = prevColor - pClip;
     vec3 aUnit = abs(vClip / eClip);
     float denom = max(aUnit.x, max(aUnit.y, aUnit.z));

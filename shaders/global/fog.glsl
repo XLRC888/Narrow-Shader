@@ -47,7 +47,8 @@ float get_shadowing(vec3 ScreenPos, vec3 LightPos, float Dither, bool IsDH) {
     vec3 Step = (LightPosScreen - ScreenPos) / GODRAYS_QUALITY;
     vec3 ExpectedPos = ScreenPos + Step * Dither;
     for (int i = 1; i <= GODRAYS_QUALITY; i++) {
-        float RealDepth = get_depth(ExpectedPos.xy, IsDH);
+        vec2 ClampedXY = clamp(ExpectedPos.xy, 0, 1);
+        float RealDepth = get_depth(ClampedXY, IsDH);
         LightFactor += 1 - step(1, RealDepth);
         ExpectedPos += Step;
     }
