@@ -1,31 +1,33 @@
-# mellow-shader
+# Narrow Shader
 
-Simple gameplay-oriented Iris shaderpack meant for low-end computers. Mellow is vivid and colorful and aims to have a similar level of visibility to vanilla.
+A mood-driven fork of [Mellow Shader v3.2](https://codeberg.org/TheCMK/mellow-shader) by TheCMK. Adds preference/mood color schemes (Horror, Cute, Steampunk, Noir, Soft, B-W, Cyberpunk) alongside the original quality profiles (Fast/Fancy/Fabulous).
 
 ![sunset in a taiga biome](img/cover.png)
 
 ## Installation
-Downloading directly from codeberg is usually not recommended, as the code is more likely to contain bugs.
-Unless you have a good reason to download from here, you should go to [Modrinth](https://modrinth.com/shader/mellow) instead.
 
 This shader requires [Iris](https://www.irisshaders.dev/) to function.
-1. Click on the "More operations" button (with the three dots), located above the files, on the right.
-2. Select "Download as ZIP"
-3. Copy the file to your .minecraft/shaderpacks folder
-4. Enable it in-game, in Options > Video Settings > Shader Packs
+1. Download the latest ZIP from [GitHub Releases](https://github.com/XLRC888/Narrow-Shader/releases)
+2. Copy the file to your `.minecraft/shaderpacks` folder
+3. Enable it in-game, in Options > Video Settings > Shader Packs
 
-![](img/installation.png)
-
-##  Features
+## Features
 - Bloom
 - Wavy foliage & water
 - Ambient & border fog
-- "Realistic" clouds
+- Volumetric clouds
 - Lightmap based shadows
 - Handheld lights
-- Basic color grading (saturation, exposure, etc)
-- Fully adjustable light colors
+- Full color grading (saturation, exposure, contrast, vibrance, channel mixer, color balance)
+- 12 color schemes including 7 mood presets
+- SMAA & TAA
+- SSAO, godrays, reflections
+- PBR support (labPBR 1.3)
+- Distant Horizons support
 
-##   Compatibility
-- Modern Nvidia, AMD and Intel gpus are supported on both Windows and Linux. Macs may or may not work.
-- Please use the latest Iris version. Optifine has some small bugs, but it should also mostly work.
+## Compatibility
+- Modern Nvidia, AMD and Intel gpus are supported on both Windows and Linux.
+- Please use the latest Iris version. Optifine has some small bugs, but should also mostly work.
+
+## License
+This project is dual-licensed under MIT and Apache 2.0 (inherited from Mellow Shader by TheCMK).
