@@ -88,7 +88,8 @@ vec3 get_atm_fog(vec3 Color, vec3 ScreenPos, vec3 PlayerPos, float Dist, float V
         }
     #endif
     Scattering += tint_underwater(SKY_GROUND / PI);
-    float Transmittance = exp(-FOG_EXTINCTION * min(Dist, 128) * Density);
+    float DitheredDist = Dist + (Dither - 0.5) * 0.5;
+    float Transmittance = exp(-FOG_EXTINCTION * min(DitheredDist, 128) * Density);
     Color *= Transmittance;
     return Color + Scattering * (1 - Transmittance) * FOG_SCATTERING / FOG_EXTINCTION;
 }
