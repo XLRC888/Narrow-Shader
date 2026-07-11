@@ -56,12 +56,12 @@ void main() {
     Color.rgb = pow(Color.rgb, vec3(1/2.2));
 
     Color.rgb = apply_vibrance(Color.rgb, VIBRANCE);
-    #if COLOR_SCHEME == 11
+    #if MOOD == 6
         Color.rgb = apply_saturation(Color.rgb, 0.0);
     #else
         Color.rgb = apply_saturation(Color.rgb, SATURATION);
     #endif
-    #if COLOR_SCHEME == 9
+    #if MOOD == 4
         Color.rgb = apply_contrast(Color.rgb, CONTRAST + 0.3);
     #else
         Color.rgb = apply_contrast(Color.rgb, CONTRAST);
