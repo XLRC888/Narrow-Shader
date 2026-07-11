@@ -1,5 +1,4 @@
 #include "/lib/all_the_libs.glsl"
-
 out vec2 texcoord;
 #include "/global/light_colors.vsh"
 void main() {

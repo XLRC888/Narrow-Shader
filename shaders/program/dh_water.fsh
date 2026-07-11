@@ -1,49 +1,34 @@
 #define DH_TERRAIN
-
 #include "/lib/all_the_libs.glsl"
-
 #include "/global/gbuffers.fsh"
 #include "/global/fog.glsl"
-
-
 vec4 get_translucent_basic(vec3 ScreenPos, vec3 PlayerPos, mat3 TBN, float Dither) {
 	vec4 Color = glcolor * texture(gtexture, texcoord);
 	if (Color.a < alphaTestRef) {
 		discard;
 	}
 	Color.rgb = to_linear(Color.rgb);
-
 	vec3 TweakedLM = tweak_lightmap(Color.rgb, PlayerPos, LightmapCoords, texcoord, ScreenPos, TBN, Dither, 1);
 	Color.rgb = TweakedLM;
-	
 	return Color;
 }
-
 /* DRAWBUFFERS:0 */
 layout(location = 0) out vec4 Color;
-
 void main() {
     vec3 ScreenPos = vec3(gl_FragCoord.xy*resolutionInv, gl_FragCoord.z);
-    vec3 ViewPos = screen_view(ScreenPos, true); // Need to recalc here, water reflections break otherwise
+    vec3 ViewPos = screen_view(ScreenPos, true);
     vec3 PlayerPos = view_player(ViewPos, true);
-
     float Dither = dither(gl_FragCoord.xy);
-
     if (!transition_to_dh(PlayerPos, true, Dither)) {
         discard;
     }
-
     float Depth = texture(depthtex1, ScreenPos.xy).x;
-
     if(Depth < 1) {
         discard;
     }
-
     vec3 ViewPosN = normalize(ViewPos);
-
 	mat3 TBN = tbn_decode(Normal, Tangent);
 	if(material == 10001) {
-		// glcolor gets set to water color in vsh
 		#if WATER_TEXTURE_MODE == 2
 			vec4 BaseColor = vec4(glcolor.rgb, glcolor.a);
 		#else
@@ -51,7 +36,7 @@ void main() {
 			Color.rgb = to_linear(Color.rgb);
 			#if WATER_TEXTURE_MODE == 1
 				Color.rgb += 0.5;
-				Color.a = 1; 
+				Color.a = 1;
 			#endif
 			vec4 BaseColor = Color * glcolor;
 		#endif
@@ -62,7 +47,6 @@ void main() {
 	else {
 		Color = get_translucent_basic(ScreenPos, PlayerPos, TBN, Dither);
 	}
-
     float VdotL = dot(ViewPosN, sunPosN);
 	vec3 SkyColor = get_sky_main(ViewPosN, normalize(PlayerPos), get_sun_glare(VdotL));
     Color.rgb = get_fog_main(ScreenPos, PlayerPos, Color.rgb, gl_FragCoord.z, SkyColor, VdotL, Dither, true);

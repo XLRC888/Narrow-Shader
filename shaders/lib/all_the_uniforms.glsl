@@ -38,7 +38,6 @@
     uniform float wetness;
     uniform float sunAngle;
     uniform vec3 relativeEyePosition;
-
     uniform sampler2D colortex0;
     uniform sampler2D colortex1;
     uniform sampler2D colortex2;
@@ -57,7 +56,6 @@
     uniform sampler2D normals;
     uniform sampler2D specular;
     uniform sampler2D gtexture;
-
     uniform mat4 gbufferProjectionInverse;
     uniform mat4 gbufferProjection;
     uniform mat4 gbufferModelView;
@@ -68,10 +66,8 @@
     uniform mat4 shadowModelViewInverse;
     uniform mat4 shadowProjection;
     uniform mat4 shadowProjectionInverse;
-
     uniform float near;
     uniform float far;
-
     uniform float timeAngle;
     uniform float nightStrength;
     uniform float dayStrength;
@@ -86,7 +82,6 @@
     uniform float precipitationSmooth;
     uniform float fogAmount;
     uniform float rainbowStrength;
-
     uniform sampler2D vxDepthTexTrans;
     uniform sampler2D vxDepthTexOpaque;
     uniform mat4 vxProjInv;
@@ -97,29 +92,22 @@
     uniform mat4 vxModelViewPrev;
     uniform int vxRenderDistance;
 #endif
-
 #ifdef VOXY
     #define DISTANT_HORIZONS
-
     #define dhDepthTex0 vxDepthTexTrans
     #define dhDepthTex1 vxDepthTexOpaque
-
     #define dhProjectionInverse vxProjInv
     #define dhProjection vxProj
     #define dhPreviousProjection vxProjPrev
-    
     #define dhRenderDistance (vxRenderDistance * 16)
 #else
     uniform sampler2D dhDepthTex0;
     uniform sampler2D dhDepthTex1;
-
     uniform mat4 dhProjectionInverse;
     uniform mat4 dhProjection;
     uniform mat4 dhPreviousProjection;
-
     uniform int dhRenderDistance;
 #endif
-
 #if (defined DIMENSION_OVERWORLD) || (!defined CUSTOM_SKYBOXES)
 const bool colortex0Clear = false;
 #endif
@@ -129,24 +117,11 @@ const bool colortex3Clear = false;
 const bool gaux1Clear = false;
 const bool colortex5Clear = false;
 const bool shadowcolor0Clear = false;
-
 const int noiseTextureResolution = 256;
-
 const vec4 colortex0ClearColor = vec4(0, 0, 0, 1);
 const vec4 colortex1ClearColor = vec4(0,0,0,1);
-
 const float PI = 3.1415926535897;
 const float TAU = 2 * PI;
 const float gr = 1.6180339887498;
-
 const float shadowDistanceRenderMul = 1.0;
 const bool shadowHardwareFiltering = true;
-
-/*
-const int colortex0Format = R11F_G11F_B10F;
-const int colortex1Format = R11F_G11F_B10F;
-const int colortex2Format = RGBA8;
-const int gaux1Format = R11F_G11F_B10F;
-const int shadowcolor0Format = R8;
-const int colortex5Format = RG16; 
-*/

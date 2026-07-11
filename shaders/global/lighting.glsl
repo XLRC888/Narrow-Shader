@@ -1,16 +1,10 @@
-// Never include this file directly. Use gbuffers.fsh/vsh instead
-
 vec2 tweak_lightmap_vertex(vec2 LightmapCoords, inout vec3 SunAmbient, inout vec3 SunDirect, vec3 ViewPosN, vec3 Normal, vec3 PlayerPos) {
     LightmapCoords = max(LightmapCoords * 1.06667 - 0.0625, 0);
-
     LightmapCoords.x = pow(LightmapCoords.x, 4.0001 - LM_FALLOFF_CURVE);
-
     #ifdef DIMENSION_OVERWORLD
-        // Combine ambient lighting with the sky and some other tricks to make it less flat
         float NdotU = clamp(dot(gbufferModelView[1].xyz, Normal), -1, 1);
         vec3 SkyGround = SKY_GROUND + get_sun_glare(clamp(dot(Normal, sunPosN), -1, 1));
         SunAmbient = mix(SunAmbient, mix(SkyGround, SKY_TOP, NdotU * 0.5 + 0.5), 0.4);
-
         #ifdef IS_IRIS
             if(lightningBoltPosition.w > 0) {
                 float VdotLi = 1 - min(1, distance(lightningBoltPosition.xyz, PlayerPos) * 0.01);
@@ -20,7 +14,6 @@ vec2 tweak_lightmap_vertex(vec2 LightmapCoords, inout vec3 SunAmbient, inout vec
             }
         #endif
     #endif
-
     #ifdef HANDHELD_LIGHTS
         #ifdef IS_IRIS
             vec3 ViewPosOffset = player_view(PlayerPos + relativeEyePosition, false);
@@ -28,7 +21,6 @@ vec2 tweak_lightmap_vertex(vec2 LightmapCoords, inout vec3 SunAmbient, inout vec
             vec3 ViewPosOffset = ViewPos;
         #endif
         float Dist = length(ViewPosOffset);
-
         float HandheldLight = max((heldBlockLightValue - Dist) / 15.0, 0);
         #ifndef GBUFFERS_BASIC
             HandheldLight *= max(0, dot(-normalize(ViewPosOffset), Normal));
@@ -36,23 +28,18 @@ vec2 tweak_lightmap_vertex(vec2 LightmapCoords, inout vec3 SunAmbient, inout vec
         HandheldLight = pow(HandheldLight, 4.0 - HANDHELD_FALLOFF_CURVE);
         LightmapCoords.x = max(LightmapCoords.x, HandheldLight);
     #endif
-
     #ifdef LM_FLICKER
         LightmapCoords.x *= (1 - LM_FLICKER_STRENGTH) + texture(noisetex, vec2(frameTimeCounter / 8, 0)).r * LM_FLICKER_STRENGTH;
     #endif
-
     #ifndef DIMENSION_OVERWORLD
         LightmapCoords.y = 1;
     #endif
-
     #if (defined DYNAMIC_SHADOWS) && (defined DIMENSION_OVERWORLD)
         SunDirect *= 1.2;
         SunAmbient *= 0.85;
     #endif
-
     return LightmapCoords;
 }
-
 vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texcoord, vec3 ScreenPos, mat3 TBN, float Dither, float PomShadow) {
     vec3 LightColorFinal = SUN_AMBIENT;
     #ifdef VOXY_TERRAIN
@@ -82,15 +69,12 @@ vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texco
         #else
             float NdotL = dot(PackNormal, sunOrMoonPosN);
         #endif
-
         NdotL *= PomShadow;
-
-
         #ifndef DIMENSION_END
             float Shadow = 0;
             float NdotLflat = dot(TBN[2], sunOrMoonPosN);
             #ifdef DYNAMIC_SHADOWS
-                float SSSStrength = float(material > 10001) * PBR_SSS_STRENGTH; // Subsurface scattering
+                float SSSStrength = float(material > 10001) * PBR_SSS_STRENGTH;
                 #ifdef PBR_SPECULAR
                     SSSStrength = max(SSSStrength, PackSSS);
                 #endif
@@ -98,10 +82,8 @@ vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texco
                 if(NdotLflat > -1e-6 || (DoSSS && material >= 10002)) {
                     float ShadowS = 1, ShadowD = 1;
                     float Fade = shadow_fade(PlayerPos, shadowDistance);
-
                     if(Fade < 1) {
                         ShadowD = get_shadow_dynamic(ViewPos, PlayerPos, false, TBN[2], NdotL, LightmapCoords.y, DoSSS, Dither);
-
                         if(DoSSS) {
                             LightColorFinal += SUN_DIRECT * ShadowD * exp(-(1 - SSSStrength) * 5 * abs(NdotL)) * max(ISOTROPIC_PHASE, xlf_phase(dot(ViewPosN, sunOrMoonPosN), 0.6)) * 4 * (1-Fade);
                         }
@@ -109,7 +91,6 @@ vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texco
                     if(Fade > 0) {
                         ShadowS = get_shadow_static(LightmapCoords.y);
                     }
-                    
                     Shadow = mix(ShadowD, ShadowS, Fade);
                 }
             #else
@@ -120,10 +101,7 @@ vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texco
         #endif
         LightColorFinal += SUN_DIRECT * NdotL;
     #endif
-
     const vec3 TorchColor = to_linear(vec3(f_LM_RED, f_LM_GREEN, f_LM_BLUE));
-    
-
     float TorchPow = LightmapCoords.x;
     #ifdef PBR_SPECULAR
         TorchPow += Emissiveness;
@@ -133,7 +111,6 @@ vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texco
     #ifdef PBR_SPECULAR
         LightColorFinal *= 1 - Porosity * wetness * 0.66 * LightmapCoords.y;
     #endif
-
     LightColorFinal *= Albedo;
     #ifdef PBR_SPECULAR
         if(material != 10001 && !(material >= 10003 && material <= 10006)) {
@@ -162,6 +139,5 @@ vec3 tweak_lightmap(vec3 Albedo, vec3 PlayerPos, vec2 LightmapCoords, vec2 texco
             }
         }
     #endif
-
     return LightColorFinal;
 }

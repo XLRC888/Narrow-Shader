@@ -1,7 +1,5 @@
 #define ENCHANTMENT_GLINT
-
 #include "/lib/all_the_libs.glsl"
-
 #include "/global/gbuffers.vsh"
 void main() {
 	init_generic();

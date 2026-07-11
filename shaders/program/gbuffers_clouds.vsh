@@ -1,9 +1,7 @@
 #include "/lib/all_the_libs.glsl"
 #include "/global/light_colors.vsh"
-
 out vec2 texcoord;
 out vec4 glcolor;
-
 void main() {
 	#if CLOUD_STYLE != 0
 		gl_Position = vec4(-1);

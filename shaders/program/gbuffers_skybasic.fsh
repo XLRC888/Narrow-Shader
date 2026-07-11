@@ -1,10 +1,7 @@
 #include "/lib/all_the_libs.glsl"
-
 /* DRAWBUFFERS:0 */
 layout(location = 0) out vec4 Color;
-
 in vec4 starData;
-
 void main() {
 	#ifdef CUSTOM_SKYBOXES
 	if (starData.a > 0.5) {

@@ -1,5 +1,4 @@
 #include "/lib/all_the_libs.glsl"
-
 out vec2 texcoord;
 void main() {
     gl_Position = ftransform();

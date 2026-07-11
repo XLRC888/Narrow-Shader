@@ -8,32 +8,27 @@ const vec2 poisson_disk_2d[] = vec2[8](
         vec2(0.18920463723666625, 0.7216180893153676),
         vec2(0.05891867438075504, -0.16082515533796937)
     );
-
 vec3 ssao(vec3 Color, vec3 ViewPos, float Dither, bool IsDH) {
     float Depth = -ViewPos.z;
     float dx = dFdx(Depth);
     float dy = dFdy(Depth);
-    
     vec3 Normal = normalize(vec3(dx, dy, (1-dx*dx-dy*dy)));
-
     float Factor = 0, Hits = 0;
-
     Dither *= TAU;
-
     for (int i = 0; i < 8; i++) {
-        const float DEPTH_BIAS = 0.00015; // (mostly) fixes AO when looking straight down
+        const float DEPTH_BIAS = 0.00015;
         vec3 Sample = vec3(rotate(poisson_disk_2d[i], Dither) * SSAO_SCALE * (1 + float(IsDH)), DEPTH_BIAS);
         Sample *= sign(dot(Normal, Sample));
         Sample += Normal * 0.05;
         Sample += ViewPos;
         vec3 ScreenSamplePos = view_screen(Sample, IsDH);
-        if(ScreenSamplePos.xy != clamp(ScreenSamplePos.xy, 0, 1)) continue; // Don't sample if offscreen
+        if(ScreenSamplePos.xy != clamp(ScreenSamplePos.xy, 0, 1)) continue;
         bool IsDH2;
         float RealDepth = get_depth_lq(ScreenSamplePos.xy, IsDH2) + 1e-5;
         if(IsDH != IsDH2) {
             ScreenSamplePos = view_screen(Sample, IsDH2);
         }
-        if (RealDepth < 0.56) continue; // Skip hand
+        if (RealDepth < 0.56) continue;
         Factor += step(RealDepth, ScreenSamplePos.z) * clamp(2 - (ld_exact(ScreenSamplePos.z , IsDH) - ld_exact(RealDepth, IsDH2)), 0, 1);
         Hits++;
     }
