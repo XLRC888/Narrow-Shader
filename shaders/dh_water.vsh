@@ -8,7 +8,7 @@ varying vec3 viewPos;
 
 void main() {
     gl_Position = ftransform();
-    gl_FogFragCoord = length((gl_ModelViewMatrix * gl_Vertex).xyz);
+
     viewPos = (gl_ModelViewMatrix * gl_Vertex).xyz;
     color = gl_Color;
     texcoord = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;

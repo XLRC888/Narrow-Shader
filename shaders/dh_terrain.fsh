@@ -27,7 +27,6 @@ void main() {
     float dayProgress = float(worldTime) / 24000.0;
     dayProgress = fract(dayProgress - 0.25);
     vec3 litColor = calculateLighting(albedo.rgb, normal, viewPos, lmcoord, dayProgress, rainStrength);
-    litColor = toSRGB(litColor);
     fragColor = vec4(litColor, albedo.a);
     lightData = vec4(lmcoord, 0.0, 1.0);
     encodedNormal = vec4(normal * 0.5 + 0.5, 1.0);

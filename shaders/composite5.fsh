@@ -18,7 +18,6 @@ void main() {
     vec3 color = texture2D(colortex0, texcoord).rgb;
     color = applyBloom(color, colortex5, texcoord, 0.5);
     color = tonemapACES(color);
-    color = gammaCorrect(color);
     color = toSRGB(color);
     fragColor = vec4(color, 1.0);
 }

@@ -74,7 +74,6 @@ void main() {
     float skyReflect = max(reflectWorld.y, 0.0);
     vec3 skyColor = getSkyLightColor(1.0, dayProgress);
     litColor += skyColor * skyReflect * WATER_REFLECTIVITY * 0.3;
-    litColor = toSRGB(litColor);
     fragColor = vec4(litColor, albedo.a * 0.8);
     lightData = vec4(lmcoord, 0.0, 1.0);
     encodedNormal = vec4(normal * 0.5 + 0.5, 1.0);

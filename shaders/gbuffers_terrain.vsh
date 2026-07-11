@@ -137,7 +137,6 @@ void main() {
     #endif
 
     gl_Position = gl_ProjectionMatrix * position;
-    gl_FogFragCoord = length(position.xyz);
     color = gl_Color;
     texcoord = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
     lmcoord = (gl_TextureMatrix[1] * gl_MultiTexCoord1).xy;

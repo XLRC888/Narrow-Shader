@@ -12,6 +12,6 @@ layout(location = 0) out vec4 fragColor;
 
 void main() {
     vec3 color = texture2D(colortex0, texcoord).rgb;
-    color = bloomExtract(color, 0.8);
+    color = bloomExtract(color, 1.0);
     fragColor = vec4(color, 1.0);
 }

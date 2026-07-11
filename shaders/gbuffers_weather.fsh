@@ -13,6 +13,6 @@ layout(location = 1) out vec4 lightData;
 void main() {
     vec4 albedo = texture2D(texture, texcoord) * color;
     if (albedo.a < 0.1) discard;
-    fragColor = albedo;
+    fragColor = vec4(toLinear(albedo.rgb), albedo.a);
     lightData = vec4(lmcoord, 0.0, 1.0);
 }

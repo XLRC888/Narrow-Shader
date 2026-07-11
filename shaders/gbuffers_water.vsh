@@ -22,7 +22,7 @@ void main() {
     wave += sin(frameTimeCounter * 1.5 + worldPos.x * 0.8 + worldPos.z * 0.6) * 0.03;
     position.y += wave;
     gl_Position = gl_ProjectionMatrix * position;
-    gl_FogFragCoord = length(position.xyz);
+
     color = gl_Color;
     texcoord = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
     lmcoord = (gl_TextureMatrix[1] * gl_MultiTexCoord1).xy;

@@ -20,7 +20,9 @@ void main() {
     vec4 albedo = texture2D(texture, texcoord) * color;
     if (albedo.a < 0.1) discard;
     vec4 light = texture2D(lightmap, lmcoord);
-    fragColor = vec4(albedo.rgb * light.rgb, albedo.a);
+    vec3 lAlbedo = toLinear(albedo.rgb);
+    vec3 lLight = toLinear(light.rgb);
+    fragColor = vec4(lAlbedo * lLight, albedo.a);
     lightData = vec4(lmcoord, 0.0, 1.0);
     encodedNormal = vec4(normal * 0.5 + 0.5, 1.0);
 }
