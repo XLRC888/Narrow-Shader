@@ -302,6 +302,7 @@ const float entityShadowDistanceMul = 0.125; // [0.125 0.25 0.375 0.5 0.625 0.75
 
 #define COLOR_SCHEME 1 // [1 2 3 4 5]
 #define MOOD 0 // [0 1 2 3 4 5 6 7]
+#define MOOD_FOG_STRENGTH 1.0 // [0.0 0.5 1.0 1.5 2.0 3.0 4.0 5.0 6.0 8.0 10.0]
 
 #define PROFILE
 #define INFO 0 // [0]

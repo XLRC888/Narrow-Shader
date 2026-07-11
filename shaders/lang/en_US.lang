@@ -223,6 +223,7 @@ value.COLOR_SCHEME.2=Vanilla
 value.COLOR_SCHEME.3=Choc v7
 value.COLOR_SCHEME.4=Visually Vibrant
 value.COLOR_SCHEME.5=Winter
+option.MOOD_FOG_STRENGTH=Mood Fog Strength
 option.MOOD=Mood
 option.MOOD.comment=Completely overrides the color scheme with a themed mood palette.
 value.MOOD.0=Off

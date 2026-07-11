@@ -192,6 +192,7 @@ value.COLOR_SCHEME.2=Vanilla
 value.COLOR_SCHEME.3=Choc v7
 value.COLOR_SCHEME.4=Visually Vibrant
 value.COLOR_SCHEME.5=Hiver
+option.MOOD_FOG_STRENGTH=Intensité du brouillard d'ambiance
 option.MOOD=Ambiance
 option.MOOD.comment=Remplace le schéma de couleurs par une palette d'ambiance thématique.
 value.MOOD.0=Désactivé

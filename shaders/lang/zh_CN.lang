@@ -222,6 +222,7 @@ value.COLOR_SCHEME.2=原版
 value.COLOR_SCHEME.3=Chocapic13 v7
 value.COLOR_SCHEME.4=灵动视觉
 value.COLOR_SCHEME.5=冬日
+option.MOOD_FOG_STRENGTH=氛围雾强度
 option.MOOD=氛围
 option.MOOD.comment=用主题氛围调色板完全覆盖配色方案。
 value.MOOD.0=关闭

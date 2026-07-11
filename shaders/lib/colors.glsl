@@ -484,7 +484,7 @@ const float f_BIOME_SKY_CONTRIBUTION = max_const(0.3 + BIOME_SKY_CONTRIBUTION);
 // Horror
 
 #undef ATM_FOG_STRENGTH
-#define ATM_FOG_STRENGTH 6.0
+#define ATM_FOG_STRENGTH (0.25 * MOOD_FOG_STRENGTH)
 
 const float f_LM_RED = max_const(0.85 + LM_RED);
 const float f_LM_GREEN = max_const(0.7 + LM_GREEN);
