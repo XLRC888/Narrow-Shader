@@ -774,13 +774,13 @@ const float f_BIOME_SKY_CONTRIBUTION = max_const(0.2 + BIOME_SKY_CONTRIBUTION);
 #elif (MOOD == 4)
 // Noir
 
-const float f_LM_RED = max_const(0.8 + LM_RED);
-const float f_LM_GREEN = max_const(0.65 + LM_GREEN);
-const float f_LM_BLUE = max_const(0.55 + LM_BLUE);
+const float f_LM_RED = max_const(0.9 + LM_RED);
+const float f_LM_GREEN = max_const(0.8 + LM_GREEN);
+const float f_LM_BLUE = max_const(0.7 + LM_BLUE);
 
-const float f_NOON_RED = max_const(1.0 + NOON_RED);
-const float f_NOON_GREEN = max_const(1.0 + NOON_GREEN);
-const float f_NOON_BLUE = max_const(1.05 + NOON_BLUE);
+const float f_NOON_RED = max_const(0.7 + NOON_RED);
+const float f_NOON_GREEN = max_const(0.7 + NOON_GREEN);
+const float f_NOON_BLUE = max_const(0.75 + NOON_BLUE);
 
 const float f_SUNRISE_RED = max_const(0.7 + SUNRISE_RED);
 const float f_SUNRISE_GREEN = max_const(0.65 + SUNRISE_GREEN);
