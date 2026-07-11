@@ -43,7 +43,6 @@ void main() {
     #endif
     Color.rgb *= EXPOSURE;
     Color.rgb = apply_tonemap(Color.rgb);
-    Color.rgb += (dither(gl_FragCoord.xy) - 0.5) / 255;
     #ifdef SMAA
         Color.rgb = pow(Color.rgb, vec3(1 / 2.2));
     #endif

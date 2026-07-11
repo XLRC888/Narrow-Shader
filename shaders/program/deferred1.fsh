@@ -68,5 +68,4 @@ void main() {
             Color.rgb = mix(Color.rgb, VxData.rgb, VxData.a);
         }
     #endif
-    Color.rgb += (dither(gl_FragCoord.xy) - 0.5) / 255;
 }

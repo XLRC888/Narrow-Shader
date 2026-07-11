@@ -62,5 +62,5 @@ void main() {
     Color.rgb = film_grain(Color.rgb, gl_FragCoord.xy);
     #endif
     Color.rgb = apply_vignette(Color.rgb, texcoord);
-    Color.xyz += (ign(gl_FragCoord.xy, false) - 0.5) / 128;
+    Color.xyz += (ign(gl_FragCoord.xy, false) - 0.5) / 255;
 }
