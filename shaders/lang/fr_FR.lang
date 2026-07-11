@@ -242,6 +242,7 @@ screen.COLOR_BALANCING_SETTINGS=Réglages de la correction des couleurs
 screen.CHANNEL_MIXER_SETTINGS=Réglages du mélangeur de canaux
 screen.SEASONS_SETTINGS=Réglages des saisons
 screen.OUTLINE_SETTINGS=Réglages des contours
+screen.MOOD=Ambiance
 
 profile.FAST=§bRapide
 profile.FANCY=§aDétaillé

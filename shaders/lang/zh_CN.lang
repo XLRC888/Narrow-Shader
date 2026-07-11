@@ -281,6 +281,7 @@ screen.SEASONS_SETTINGS=季节
 screen.OUTLINE_SETTINGS=描边
 screen.PBR_POM_SETTINGS=视差
 screen.PBR_SPECULAR_SETTINGS=高光
+screen.MOOD=氛围
 
 profile.FAST=§b快速
 profile.FANCY=§a高品质

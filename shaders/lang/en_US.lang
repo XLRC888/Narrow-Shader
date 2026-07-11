@@ -282,6 +282,7 @@ screen.SEASONS_SETTINGS=Seasons Settings
 screen.OUTLINE_SETTINGS=Outline Settings
 screen.PBR_POM_SETTINGS=POM Settings
 screen.PBR_SPECULAR_SETTINGS=Specular Settings
+screen.MOOD=Mood
 
 profile.FAST=§bFast
 profile.FANCY=§aFancy
