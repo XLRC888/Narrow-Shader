@@ -1,8 +1,7 @@
 #define max_const(x) ( x > 0.0 ? x : 0.0)
 
+#if (MOOD == 0 && COLOR_SCHEME == 1)
 // Default
-#if MOOD == 0
-#if COLOR_SCHEME == 1
 
 const float f_LM_RED = max_const(1.0 + LM_RED);
 const float f_LM_GREEN = max_const(0.75 + LM_GREEN);
@@ -98,7 +97,7 @@ const float f_BIOME_WATER_CONTRIBUTION = max_const(0.5 + BIOME_WATER_CONTRIBUTIO
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.3 + BIOME_SKY_CONTRIBUTION);
 
 // Vanilla
-#elif COLOR_SCHEME == 2
+#elif (MOOD == 0 && COLOR_SCHEME == 2)
 
 const float f_LM_RED = max_const(1.1 + LM_RED);
 const float f_LM_GREEN = max_const(0.9 + LM_GREEN);
@@ -194,7 +193,7 @@ const float f_BIOME_WATER_CONTRIBUTION = clamp(0.7 + BIOME_WATER_CONTRIBUTION, 0
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.8 + BIOME_SKY_CONTRIBUTION);
 
 // Choc v7
-#elif COLOR_SCHEME == 3
+#elif (MOOD == 0 && COLOR_SCHEME == 3)
 
 const float f_LM_RED = max_const(1.3 + LM_RED);
 const float f_LM_GREEN = max_const(0.9 + LM_GREEN);
@@ -290,7 +289,7 @@ const float f_BIOME_WATER_CONTRIBUTION = max_const(0.0 + BIOME_WATER_CONTRIBUTIO
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.3 + BIOME_SKY_CONTRIBUTION);
 
 // Visually Vibrant
-#elif COLOR_SCHEME == 4
+#elif (MOOD == 0 && COLOR_SCHEME == 4)
 
 const float f_LM_RED = max_const(1.1 + LM_RED);
 const float f_LM_GREEN = max_const(0.9 + LM_GREEN);
@@ -386,7 +385,7 @@ const float f_BIOME_WATER_CONTRIBUTION = max_const(0.7 + BIOME_WATER_CONTRIBUTIO
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.7 + BIOME_SKY_CONTRIBUTION);
 
 // Winter
-#elif COLOR_SCHEME == 5
+#elif (MOOD == 0 && COLOR_SCHEME == 5)
 
 const float f_LM_RED = max_const(1.3 + LM_RED);
 const float f_LM_GREEN = max_const(0.93 + LM_GREEN);
@@ -481,8 +480,7 @@ const float f_WATER_ALPHA = max_const(0.7 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.5 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.3 + BIOME_SKY_CONTRIBUTION);
 
-#endif
-#elif MOOD == 1
+#elif (MOOD == 1)
 // Horror
 
 const float f_LM_RED = max_const(0.3 + LM_RED);
@@ -578,7 +576,7 @@ const float f_WATER_ALPHA = max_const(0.4 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.3 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.2 + BIOME_SKY_CONTRIBUTION);
 
-#elif MOOD == 2
+#elif (MOOD == 2)
 // Cute
 
 const float f_LM_RED = max_const(1.1 + LM_RED);
@@ -674,7 +672,7 @@ const float f_WATER_ALPHA = max_const(0.5 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.6 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.5 + BIOME_SKY_CONTRIBUTION);
 
-#elif MOOD == 3
+#elif (MOOD == 3)
 // Steampunk
 
 const float f_LM_RED = max_const(1.2 + LM_RED);
@@ -770,7 +768,7 @@ const float f_WATER_ALPHA = max_const(0.6 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.3 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.2 + BIOME_SKY_CONTRIBUTION);
 
-#elif MOOD == 4
+#elif (MOOD == 4)
 // Noir
 
 const float f_LM_RED = max_const(0.8 + LM_RED);
@@ -866,7 +864,7 @@ const float f_WATER_ALPHA = max_const(0.5 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.3 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.2 + BIOME_SKY_CONTRIBUTION);
 
-#elif MOOD == 5
+#elif (MOOD == 5)
 // Soft
 
 const float f_LM_RED = max_const(1.0 + LM_RED);
@@ -962,7 +960,7 @@ const float f_WATER_ALPHA = max_const(0.55 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.6 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.5 + BIOME_SKY_CONTRIBUTION);
 
-#elif MOOD == 6
+#elif (MOOD == 6)
 // B-W
 
 const float f_LM_RED = max_const(0.85 + LM_RED);
@@ -1058,7 +1056,7 @@ const float f_WATER_ALPHA = max_const(0.5 + WATER_ALPHA);
 const float f_BIOME_WATER_CONTRIBUTION = max_const(0.5 + BIOME_WATER_CONTRIBUTION);
 const float f_BIOME_SKY_CONTRIBUTION = max_const(0.3 + BIOME_SKY_CONTRIBUTION);
 
-#elif MOOD == 7
+#elif (MOOD == 7)
 // Cyberpunk
 
 const float f_LM_RED = max_const(0.9 + LM_RED);
