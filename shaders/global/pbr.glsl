@@ -27,7 +27,7 @@ void decode_specular(vec2 Texcoord, out float Smoothness, out float F0, out floa
         SSS = 0;
         Porosity = Data.b * 255.0 / 64.0;
     }
-    Emissiveness = Data.a == 1 ? 0 : Data.a;
+    Emissiveness = Data.a > 0.99 ? 0 : Data.a;
 }
 float schlick(vec3 N, vec3 V, float F0) {
     float cosTheta = clamp(dot(N, V), 0, 1);

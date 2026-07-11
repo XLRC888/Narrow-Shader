@@ -1,4 +1,6 @@
 #include "/lib/all_the_libs.glsl"
+#undef PBR_SPECULAR
+#undef PBR_NORMAL
 #include "/global/gbuffers.fsh"
 /* DRAWBUFFERS:0 */
 layout(location = 0) out vec4 Color;
